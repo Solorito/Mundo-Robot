@@ -1,0 +1,527 @@
+import processing.sound.*;
+SoundFile robost;
+Robots DESTROYER;
+Robots OMNIDRO;
+Robots ROBOCO;
+Robots DROIDEBOCK;
+Robots GALATICK;
+Robots ROBONAUT;
+Robots  ROOMBA ;
+Robots SLUGBOT;
+Robots SPEEDY;
+Robots  MOBOTS;
+Robots robt1;
+Robots robt2;
+int Mundo=0;
+PImage fondo, fondo2, robott,fondo6,fondo0,fondoo,robisin,rot, rocin, rock,rott,fondo3,
+                      robott1,fondoo1, rocin1,rot1,robisin1;
+PFont font;
+PFont fontt;
+int hbarra = 40;
+int hturno = 25;
+int turno=0;
+int triunfador=0;
+int puntos1=0;
+int puntos2=0;
+int robot1;
+int robot2;
+float r = random(0,8);
+int a = 90;
+int b = 90;
+  
+void setup(){
+  size(900,700);
+  background(0);
+  //IMAGENES
+  fondo=loadImage("fondo41.jpg");
+  fondo2=loadImage("fondo1.jpg");
+  fondo6=loadImage("fondo6.jpg");
+  fondo0=loadImage("fondo5.jpg");
+  fondo3=loadImage("fondo3.jpg");
+  
+  robott=loadImage("robot.png");
+  fondoo=loadImage("robot31.png");
+  robisin=loadImage("Veger'Robot.png");
+  rot=loadImage("Heavybot.png");
+  rocin=loadImage("FOT_Robot.png");
+  
+   robott1=loadImage("robot1.png");
+  fondoo1=loadImage("robot311.png");
+  robisin1=loadImage("Veger'Robot1.png");
+  rot1=loadImage("Heavybot1.png");
+  rocin1=loadImage("FOT_Robot1.png");
+  
+  
+  //FUENTES
+  font = createFont("Nosifer-Regular.ttf", 60);
+  fontt = createFont("BungeeInline-Regular.ttf", 60);
+  //ROBOTS
+  
+ DESTROYER = new Robots("DESTROYER;",210,7,8,12,4);
+ OMNIDRO = new Robots("OMNIDRO",210,7,9,14,3);
+ ROBOCO = new Robots("ROBOCO",210,7,9,15,2);
+ DROIDEBOCK= new Robots("DROIDEBOCK",210,7,9,13,1);
+ GALATICK = new Robots("GALATIX",210,8,9,12,0);
+  
+ ROBONAUT = new Robots("ROBONAUT;",210,7,8,12,4);
+ ROOMBA= new Robots("ROOMBA",210,7,9,14,3);
+ SLUGBOT = new Robots("SLUGBOT",210,7,9,15,2);
+ SPEEDY= new Robots("SPEEDY",210,7,9,13,1);
+ MOBOTS = new Robots("MOBOTS",210,8,9,12,0);
+ 
+ //SOUND
+robost = new SoundFile(this, "Robot - Instrumental.mp3");
+robost.play();
+robost.amp(0.4);
+
+}
+void draw(){
+ switch(Mundo){
+    case 0:
+    Inicio();
+    break;
+    
+    case 1:
+    Instrucciones();
+    break;
+    
+    case 2:
+    Seleccion1();
+    break;
+    
+    
+    case 3:
+    Seleccion2();
+    break;
+    
+    case 4: 
+    Pelea();
+    break;
+    
+    case 5:
+    resultado();
+    break;
+ }
+}
+
+ void Inicio(){
+
+  background(0);
+  image(fondo6,0,0);
+  fill(#FFFFFF);
+  textFont(font);
+  text("BIENVENIDOS AL",120,300);
+  text("MUNDO ROBOTS", 125,400);
+  textSize(20);
+  text("Click para continuar",300,650);
+  if (mousePressed){
+  Mundo=1;
+  }
+}
+void Instrucciones(){
+  background(0);
+  image(fondo,0,0);
+
+if(keyPressed){
+  if(key=='z'){
+    Mundo=2;}
+}
+}
+void Seleccion1(){
+ 
+ background (0);
+ image(fondo2,0,0);
+    noStroke();
+    fill(#FFFCFC);
+    textSize(40);
+    text("SELECIONA TU ROBOTS",145,100);
+    fill(#D10202);
+    
+    textSize(30);
+    text("DESTROYER",45,300);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 0",90,350);
+    
+    textSize(30);
+    fill(#060CB7);
+    text("OMNIDRO",380,300);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 1",410,350);
+    
+    textSize(30);
+    fill(#E2FF0D);
+    text("ROBOCO",670,300);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 2",685,350);
+    
+    textSize(30);
+    fill(#AD11AA);
+    text("DOIDEBOCK",150,500);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 3",200,550);
+    
+    textSize(30);
+    fill(#A56D23);
+    text("GALATICK",560,500);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 4",590,550);
+
+  
+  if (keyPressed){
+    if(key == '0'){
+      robt1 = DESTROYER;
+      robot1 = 0;
+      Mundo=3;
+    }
+    else if (key == '1'){
+    robt1 = OMNIDRO;
+    robot1 = 1;
+    Mundo=3;
+    }
+    else if (key == '2'){
+    robt1 = ROBOCO;
+    robot1 = 2;
+    Mundo=3;
+    }
+    else if (key == '3'){
+    robt1 = DROIDEBOCK;
+    robot1 = 3;
+    Mundo=3;
+    }
+    else if (key == '4'){
+    robt1 = GALATICK;
+    robot1 = 4;
+    Mundo=3;
+    }
+  }
+}
+void Seleccion2(){
+background (0);
+ image(fondo2,0,0);
+    noStroke();
+    fill(#FFFCFC);
+    textSize(40);
+    text("SELECIONA TU ROBOTS",145,100);
+    
+    fill(#00FF3D);
+    textSize(30);
+    text("ROBONAUT",45,300);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 5",75,350);
+    
+    textSize(30);
+    fill(#FFAF00);
+    text(" ROOMBA 1200",320,300);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 6",390,350);
+    
+    textSize(30);
+    fill(#00FFBD);
+    text("SLUGBOT",670,300);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 7",685,350);
+    
+    textSize(30);
+    fill(#0864FF);
+    text("SPEEDY",150,500);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 8",155,550);
+    
+    textSize(30);
+    fill(#FF08A9);
+    text("MOBOTS",560,500);
+    textSize(15);
+    fill(#FFFCFC);
+    text("Presione el 9",570,550);
+
+
+    
+    if (keyPressed){
+    if(key == '5'){
+      robt2 = ROBONAUT;
+      robot2 = 0;
+      Mundo=4;
+    }
+    else if (key == '6'){
+    robt2 = ROOMBA;
+    robot2 = 1;
+    Mundo=4;
+    }
+    else if (key == '7'){
+    robt2 = SLUGBOT;
+    robot2 = 2;
+    Mundo=4;
+    }
+    else if (key == '8'){
+    robt2 = SPEEDY;
+    robot2 = 4;
+    Mundo=4;
+    }
+    else if (key == '9'){
+    robt2 = MOBOTS;
+    robot2 = 4;
+    Mundo=4;
+    }
+  }
+}
+   void Pelea(){ 
+   background(0);
+   image(fondo0,0,0);
+   
+   if(robot1 == 0){
+    pushMatrix();
+    translate(50,100);
+    DESTROYER.dibujar();  
+    popMatrix();
+  }
+  
+   else if(robot1 == 1){
+    pushMatrix();
+    translate(50,100);
+    OMNIDRO.dibujar();  
+    popMatrix();
+  }
+  else if(robot1 == 2){
+    pushMatrix();
+    translate(50,100);
+    ROBOCO.dibujar();  
+    popMatrix();
+  }
+  else if(robot1 == 3){
+    pushMatrix();
+    translate(50,100);
+    DROIDEBOCK.dibujar();  
+    popMatrix();
+  }
+  
+  else if(robot1 == 4){
+    pushMatrix();
+    translate(50,100);
+    GALATICK.dibujar();  
+    popMatrix();
+  }
+  if(robot2 == 0){
+    pushMatrix();
+    translate(400,100);
+    ROBONAUT.dibujar();  
+    popMatrix();
+  }
+  
+   else if(robot2 == 1){
+    pushMatrix();
+    translate(400,100);
+    ROOMBA.dibujar();  
+    popMatrix();
+  }
+  else if(robot2 == 2){
+    pushMatrix();
+    translate(400,100);
+    SLUGBOT.dibujar();  
+    popMatrix();
+  }
+  else if(robot2 == 3){
+    pushMatrix();
+    translate(400,100);
+    SPEEDY.dibujar();  
+    popMatrix();
+  }
+  
+  else if(robot2 == 4){
+    pushMatrix();
+   translate(400,100);
+    MOBOTS.dibujar();  
+    popMatrix();
+  }
+    if (turno ==0){
+    if(keyPressed){
+      if(key == 'a'){
+      a= a+200;
+      robt2.vida = robt2.vida - robt1 .ataque;
+      turno = 1;
+      
+      }
+      else if(key == 'w'){
+      robt2.vida= robt2.vida - robt1 .resistencia;
+      turno = 1;
+      a= a+200;
+      }
+      if(robt2.vida <= 0){
+      Mundo = 5;
+      }
+    }
+    }
+
+  
+if(turno == 1){
+    if(keyPressed){
+      if(key == 'l'){
+      robt1.vida = robt1.vida - robt2.ataque;
+      turno= 0 ;
+      b= b-200;
+      }
+      else if(key == 'p'){
+      robt1.vida= robt1.vida- robt2.resistencia;
+      turno = 0;
+      b= b-200;
+      }
+      if(robt1.vida <= 0){
+      Mundo= 5;
+      }
+    }
+}
+if(puntos1 == 4){
+    fill(#ff0000);
+    text("ESPECIAL",250,100);
+    if(keyPressed){
+      if(key == '4'){
+      robt2.vida = robt2.vida - robt1.especial;
+      turno = 1;
+     puntos1 = 0;
+      }
+      if(robt2.vida <= 0){
+      Mundo = 5;
+   }
+ }
+}
+if(puntos2 == 4){
+    fill(#ECFF1F);
+    text("ESPECIAL",750,100);
+    if(keyPressed){
+      if(key == 'm'){
+      robt1.vida = robt1.vida - robt2.especial;
+      turno = 0;
+      puntos2 = 0;
+      }
+      if(robt1.vida <= 0){
+        hbarra = 0;
+        hturno = 1;
+        Mundo = 5;
+   }
+ }
+}
+//Marcador de turnos
+  if(turno == 0){
+    fill(#050000);
+    text("TU TURNO",10,100);
+    }
+    else {
+    fill(#050000);
+    text("Mi TURNO",580,100);
+    }
+    
+    if(turno == 0){
+    fill(#4682B4);  
+    }
+    else{
+   fill(#25BDC9);
+    }
+    
+    rect(0,10,250,40);
+    
+    if(turno == 1){
+    
+    }
+    else{
+    fill(#2150C1);
+    }
+    
+    rect(675,10,250,40);
+    fill(255);
+    textSize(20);
+    text(robt1.nombre,10,30);
+    text(robt2.nombre,680,30);
+    
+    if(robt1.vida >= 0 && robt1.vida <= 20){
+    fill(#ff0000);
+    }
+    else if(robt1.vida > 20 && robt1.vida <= 60){
+    fill(#F1FC7A);
+    }
+    else{
+    fill(#0FFC00);
+    }
+    rect(10,50,robt1.vida*2,5);
+    
+    if(robt2.vida >= 0 && robt2.vida <= 30){
+    fill(#ff0000);
+    }
+    else if(robt2.vida > 20 && robt2.vida <= 30){
+    fill(#F1FC7A);
+    }
+    else{
+    fill(#00ff00);
+    }
+    rect(490,50,robt2.vida*2,5);
+}
+
+
+void resultado(){
+background(0);
+image(fondo3,0,0);
+fill(#000000);
+textSize(70);
+textFont(font);
+text("El TRIUNFADOR ",45,200);
+text("ES....",45,300);
+textFont(fontt);
+fill(#FFFFFF);
+textSize(20);
+text("Para regresar",350,650);
+text("Presione la letra  e",330,675);
+
+if(robt1.vida > 0){
+textSize(90);
+fill(#000000);
+textFont(font);
+text(robt1.nombre,100,470);
+
+}
+else {
+  textSize(90);
+  textFont(font);
+  fill(#000000);
+  text(robt2.nombre,100,470);
+
+ }
+ if (keyPressed){
+     if(key =='e' || key =='E'){
+       
+      turno=0;
+      Mundo = 0;
+      
+       r= random(0,8);
+      println(int(r));
+      
+  DESTROYER = new Robots("DESTROYER;",210,7,8,12,4);
+ OMNIDRO = new Robots("OMNIDRO",210,7,9,14,3);
+ ROBOCO = new Robots("ROBOCO",210,7,9,15,2);
+ DROIDEBOCK= new Robots("DROIDEBOCK",210,7,9,13,1);
+ GALATICK = new Robots("GALATIX",210,8,9,12,0);
+  
+ ROBONAUT = new Robots("ROBONAUT;",210,7,8,12,4);
+ ROOMBA= new Robots("ROOMBA",210,7,9,14,3);
+ SLUGBOT = new Robots("SLUGBOT",210,7,9,15,2);
+ SPEEDY= new Robots("SPEEDY",210,7,9,13,1);
+ MOBOTS = new Robots("MOBOTS",210,8,9,12,0);
+     
+   }
+ }
+}
+ 
+ void keyReleased(){
+if(key == 'a' || key == 'w' || key == 'l' || key == 'p'){
+a = 90;
+b = 100;
+}
+
+}
+ 
